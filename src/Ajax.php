@@ -140,9 +140,9 @@ class Ajax extends \booosta\base\Module
 
   public function set_result_tag($tag) { $this->result_tag = $tag; }
 
-  public function get_response($tag, $results)
+  public static function get_response($tag, $results)
   {
-    if(is_array($results)) return \booosta\array2xml($results, $tag);
+    if(is_array($results)) return \booosta\Framework::array2xml($results, $tag);
 
     if($tag === null):
       $open = ''; 
@@ -161,7 +161,7 @@ class Ajax extends \booosta\base\Module
     return $result;
   }
 
-  public function print_response($tag, $results) 
+  public static function print_response($tag, $results) 
   { 
     header('Content-type: text/xml');
     print self::get_response($tag, $results);
